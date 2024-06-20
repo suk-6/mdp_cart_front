@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Header } from "@/components/semantic/header";
+import { Footer } from "@/components/semantic/footer";
 
 export const metadata: Metadata = {
 	title: "🛒통통카트",
@@ -16,7 +15,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ko">
-			<body className={inter.className}>{children}</body>
+			<body>
+				<Header />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }
