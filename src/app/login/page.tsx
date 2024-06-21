@@ -23,13 +23,13 @@ export default function LoginPage() {
 		<div className=" w-full h-fit flex flex-col pt-10">
 			<div className=" flex justify-center items-center w-full h-full p-10 my-20">
 				<div className=" p-36 flex flex-col">
-					<div className=" text-center font-bold text-xl">Login</div>
+					<div className=" text-center font-bold text-xl">로그인</div>
 					<div className=" w-96 flex flex-col gap-4 mt-10">
 						<input
 							type="text"
 							id="id"
 							name="id"
-							placeholder="ID"
+							placeholder="아이디"
 							className=" p-2 border border-gray-300 rounded-md"
 							onKeyDown={(e) => {
 								if (e.key === "Enter") {
@@ -41,7 +41,7 @@ export default function LoginPage() {
 							type="password"
 							id="password"
 							name="password"
-							placeholder="Password"
+							placeholder="비밀번호"
 							className=" p-2 border border-gray-300 rounded-md"
 							onKeyDown={(e) => {
 								if (e.key === "Enter") {
