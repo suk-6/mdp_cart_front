@@ -10,7 +10,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
 	return (
-		<div className=" w-full h-32 bg-gray-100 rounded-lg shadow-lg">
+		<div className=" w-96 h-32 bg-gray-100 rounded-lg shadow-lg float-left">
 			<div className=" flex flex-col gap-2 p-4">
 				<div className=" text-lg font-bold">{product.name}</div>
 				<div className=" text-sm">₩{formatter(product.price)}원</div>
