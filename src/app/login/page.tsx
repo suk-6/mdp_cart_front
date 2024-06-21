@@ -48,7 +48,7 @@ export default function LoginPage() {
 							className=" bg-[#ff6b6b] hover:bg-[#ff4b4b] text-white rounded-lg py-1"
 							onClick={login}
 						>
-							Login
+							로그인
 						</button>
 					</div>
 				</div>
