@@ -1,13 +1,12 @@
 "use client";
 
 import { Product } from "@/models/product";
+import formatter from "@/utils/formatter";
 
 interface ProductCardProps {
 	product: Product;
 	onAddToCart: (product: Product) => void;
 }
-
-const formatter = new Intl.NumberFormat("ko-KR").format;
 
 export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
 	return (
