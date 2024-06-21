@@ -5,7 +5,12 @@ const nextConfig = {
             {
                 hostname: 'localhost',
                 port: '3000',
-            }
+            },
+            {
+                protocol: 'https',
+                hostname: 'mdp-cart.vercel.app',
+                port: '443',
+            },
         ]
     }
 };
