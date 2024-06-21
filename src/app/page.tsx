@@ -28,7 +28,7 @@ export default function Home() {
 						.map((product, i) => (
 							<div
 								key={product.id}
-								className=" w-72 h-52 flex flex-col items-center p-10 gap-4 bg-gray-400"
+								className=" w-72 h-52 flex flex-col items-center p-8 gap-4 bg-gray-100 shadow-xl"
 							>
 								<div className=" text-lg font-bold">
 									{product.name}
