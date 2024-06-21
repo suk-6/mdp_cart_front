@@ -19,7 +19,7 @@ export default function Home() {
 					지금 쇼핑하기
 				</Link>
 			</div>
-			<div className=" w-full h-full flex flex-col gap-6 mb-5">
+			<div className=" w-full h-full flex flex-col items-center gap-6 mb-5">
 				<div className=" text-center font-bold text-2xl">추천 제품</div>
 				<div className=" flex flex-row gap-10 px-12">
 					{data.products
