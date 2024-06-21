@@ -1,4 +1,6 @@
 import Link from "next/link";
+import data from "@/data.json";
+import formatter from "@/utils/formatter";
 
 export default function Home() {
 	return (
@@ -20,9 +22,22 @@ export default function Home() {
 			<div className=" w-full h-full flex flex-col gap-6 mb-5">
 				<div className=" text-center font-bold text-2xl">추천 제품</div>
 				<div className=" flex flex-row gap-10 px-12">
-					<div className=" w-1/3 h-32 bg-gray-200"></div>
-					<div className=" w-1/3 h-32 bg-gray-200"></div>
-					<div className=" w-1/3 h-32 bg-gray-200"></div>
+					{data.products
+						.sort(() => 0.5 - Math.random())
+						.filter((_, i) => i < 3)
+						.map((product, i) => (
+							<div
+								key={product.id}
+								className=" w-72 h-52 flex flex-col items-center p-10 gap-4 bg-gray-400"
+							>
+								<div className=" text-lg font-bold">
+									{product.name}
+								</div>
+								<div className=" text-lg">
+									₩{formatter(product.price)}원
+								</div>
+							</div>
+						))}
 				</div>
 			</div>
 		</main>
