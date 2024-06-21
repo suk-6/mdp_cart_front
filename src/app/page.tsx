@@ -1,6 +1,7 @@
 import Link from "next/link";
 import data from "@/data.json";
 import formatter from "@/utils/formatter";
+import Image from "next/image";
 
 export default function Home() {
 	return (
@@ -28,8 +29,14 @@ export default function Home() {
 						.map((product, i) => (
 							<div
 								key={product.id}
-								className=" w-72 h-52 flex flex-col items-center p-8 gap-4 bg-gray-100 shadow-xl"
+								className=" w-72 h-fit flex flex-col items-center p-8 gap-4 shadow-xl"
 							>
+								<Image
+									src={`${process.env.NEXT_PUBLIC_URL}/${product.image}`}
+									width={1000}
+									height={1000}
+									alt={product.name}
+								/>
 								<div className=" text-lg font-bold">
 									{product.name}
 								</div>
