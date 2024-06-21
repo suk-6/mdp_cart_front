@@ -7,6 +7,11 @@ export default function LoginPage() {
 			"password"
 		) as HTMLInputElement;
 
+		if (id.value === "" || password.value === "") {
+			alert("모든 항목을 입력해주세요");
+			return;
+		}
+
 		if (id.value === "admin" && password.value === "admin") {
 			alert("로그인 성공");
 		} else {
