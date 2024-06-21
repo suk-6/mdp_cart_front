@@ -12,11 +12,7 @@ export default function LoginPage() {
 			return;
 		}
 
-		if (id.value === "admin" && password.value === "admin") {
-			alert("로그인 성공");
-		} else {
-			alert("로그인 실패");
-		}
+		alert("로그인 성공");
 	};
 
 	return (
