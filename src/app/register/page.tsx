@@ -79,7 +79,7 @@ export default function RegisterPage() {
 							}}
 						/>
 						<button
-							className=" bg-[#ff6b6b] hover:bg-[#ff4b4b] text-white rounded-lg py-1"
+							className=" bg-[#ff6b6b] hover:bg-[#ff4b4b] text-white rounded-lg py-2"
 							onClick={register}
 						>
 							회원가입
