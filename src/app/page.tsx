@@ -33,8 +33,8 @@ export default function Home() {
 							>
 								<Image
 									src={`${process.env.NEXT_PUBLIC_URL}/${product.image}`}
-									width={1000}
-									height={1000}
+									width={512}
+									height={512}
 									alt={product.name}
 								/>
 								<div className=" text-lg font-bold">
