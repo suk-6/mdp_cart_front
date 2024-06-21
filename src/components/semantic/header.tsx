@@ -11,11 +11,11 @@ const pages = [
 
 export const Header = () => {
 	return (
-		<header className="w-full h-16 bg-[#333] text-white flex items-center justify-between p-6 px-10">
+		<header className="w-full h-16 bg-[#333] text-white flex items-center justify-between p-6 px-20 text-nowrap">
 			<Link href={"/"}>
 				<h1 className="text-3xl font-bold">🛒통통카트</h1>
 			</Link>
-			<nav className=" flex flex-row gap-3">
+			<nav className=" flex flex-row gap-6">
 				{pages.map((page) => (
 					<Link key={page.href} href={page.href}>
 						<div>{page.name}</div>
