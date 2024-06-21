@@ -26,6 +26,11 @@ export default function LoginPage() {
 							name="id"
 							placeholder="ID"
 							className=" p-2 border border-gray-300 rounded-md"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") {
+									login();
+								}
+							}}
 						/>
 						<input
 							type="password"
@@ -33,6 +38,11 @@ export default function LoginPage() {
 							name="password"
 							placeholder="Password"
 							className=" p-2 border border-gray-300 rounded-md"
+							onKeyDown={(e) => {
+								if (e.key === "Enter") {
+									login();
+								}
+							}}
 						/>
 						<button
 							className=" bg-[#ff6b6b] hover:bg-[#ff4b4b] text-white rounded-lg py-1"
