@@ -12,11 +12,15 @@ export default function ProductPage() {
 					onAddToCart={() => {}}
 				/>
 				<ProductCard
-					product={{ id: 2, name: "제품2", price: 10000 }}
+					product={{ id: 2, name: "제품2", price: 20000 }}
 					onAddToCart={() => {}}
 				/>
 				<ProductCard
-					product={{ id: 3, name: "제품3", price: 10000 }}
+					product={{ id: 3, name: "제품3", price: 30000 }}
+					onAddToCart={() => {}}
+				/>
+				<ProductCard
+					product={{ id: 4, name: "제품4", price: 40000 }}
 					onAddToCart={() => {}}
 				/>
 			</div>
