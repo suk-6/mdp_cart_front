@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export const Header = () => {
 	return (
-		<header className="w-full h-16 bg-[#333] text-white flex items-center justify-between p-4">
+		<header className="w-full h-16 bg-[#333] text-white flex items-center justify-between p-6 px-10">
 			<Link href={"/"}>
-				<h1 className="text-2xl">🛒통통카트</h1>
+				<h1 className="text-3xl font-bold">🛒통통카트</h1>
 			</Link>
 			<nav className=" flex flex-row gap-3">
 				<Link href={"/"}>
