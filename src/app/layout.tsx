@@ -5,7 +5,7 @@ import { Footer } from "@/components/semantic/footer";
 
 export const metadata: Metadata = {
 	title: "🛒통통카트",
-	description: "🛒통통카트",
+	description: "최고의 제품을 최고의 가격에 통통카트에서 쇼핑하세요",
 };
 
 export default function RootLayout({
