@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { Header } from "@/components/semantic/header";
 import { Footer } from "@/components/semantic/footer";
-import { Provider } from "react-redux";
 import StoreProvider from "./StoreProvider";
+import { ToastContainer } from "react-toastify";
+
+import "./globals.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export const metadata: Metadata = {
 	title: "🛒통통카트",
@@ -22,6 +24,7 @@ export default function RootLayout({
 					<Header />
 					{children}
 					<Footer />
+					<ToastContainer />
 				</StoreProvider>
 			</body>
 		</html>
