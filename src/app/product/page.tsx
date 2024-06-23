@@ -1,33 +1,14 @@
 "use client";
 
 import { ProductCard } from "@/components/product/productCard";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-	addItem,
-	getCartItems,
-	increaseQuantity,
-} from "@/lib/features/cart/cartSlice";
-import { Product, ProductInCart } from "@/models/product";
+import { useAppDispatch } from "@/lib/hooks";
+import { addItem } from "@/lib/features/cart/cartSlice";
+import { Product } from "@/models/product";
 import data from "@/data.json";
 
 export default function ProductPage() {
-	const cartItems = useAppSelector(getCartItems);
 	const dispatch = useAppDispatch();
-	const handleAddToCart = (item: Product) => {
-		if (cartItems.find((cartItem) => cartItem.id === item.id)) {
-			dispatch(increaseQuantity(item.id));
-		} else {
-			const productInCart: ProductInCart = {
-				id: item.id,
-				name: item.name,
-				price: item.price,
-				quantity: 1,
-			};
-
-			dispatch(addItem(productInCart));
-		}
-	};
-
+	const handleAddToCart = (item: Product) => dispatch(addItem(item));
 	return (
 		<div className=" w-full h-fit flex flex-col items-center gap-6 pt-10 ">
 			<div className="text-center text-3xl font-bold">제품 목록</div>
