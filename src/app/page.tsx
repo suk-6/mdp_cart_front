@@ -2,6 +2,7 @@ import Link from "next/link";
 import data from "@/data.json";
 import formatter from "@/utils/formatter";
 import Image from "next/image";
+import { HomeCard } from "@/components/home/homeCard";
 
 export default function Home() {
 	return (
@@ -27,23 +28,7 @@ export default function Home() {
 						.sort(() => 0.5 - Math.random())
 						.filter((_, i) => i < 3)
 						.map((product, i) => (
-							<div
-								key={product.id}
-								className=" w-72 h-fit flex flex-col items-center p-8 gap-4 shadow-xl"
-							>
-								<Image
-									src={`${process.env.NEXT_PUBLIC_URL}/${product.image}`}
-									width={512}
-									height={512}
-									alt={product.name}
-								/>
-								<div className=" text-lg font-bold">
-									{product.name}
-								</div>
-								<div className=" text-lg">
-									₩{formatter(product.price)}원
-								</div>
-							</div>
+							<HomeCard product={product} key={i} />
 						))}
 				</div>
 			</div>
