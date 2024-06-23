@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/semantic/header";
 import { Footer } from "@/components/semantic/footer";
+import { Provider } from "react-redux";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
 	title: "🛒통통카트",
@@ -16,9 +18,11 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body>
-				<Header />
-				{children}
-				<Footer />
+				<StoreProvider>
+					<Header />
+					{children}
+					<Footer />
+				</StoreProvider>
 			</body>
 		</html>
 	);
