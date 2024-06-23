@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import AuthProvider from "./SessionProvider";
 
 export const metadata: Metadata = {
 	title: "🛒통통카트",
@@ -20,12 +21,14 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body>
-				<StoreProvider>
-					<Header />
-					{children}
-					<Footer />
-					<ToastContainer />
-				</StoreProvider>
+				<AuthProvider>
+					<StoreProvider>
+						<Header />
+						{children}
+						<Footer />
+						<ToastContainer />
+					</StoreProvider>
+				</AuthProvider>
 			</body>
 		</html>
 	);
