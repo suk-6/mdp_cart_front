@@ -1,5 +1,7 @@
 "use client";
 
+import loginHandler from "@/auth/login";
+
 export default function LoginPage() {
 	const login = () => {
 		const id = document.getElementById("id") as HTMLInputElement;
@@ -12,7 +14,7 @@ export default function LoginPage() {
 			return;
 		}
 
-		alert("로그인 성공");
+		loginHandler(id.value, password.value);
 	};
 
 	return (
