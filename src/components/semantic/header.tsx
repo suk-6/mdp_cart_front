@@ -3,6 +3,7 @@ import Link from "next/link";
 const pages = [
 	{ name: "홈", href: "/" },
 	{ name: "제품", href: "/product" },
+	{ name: "장바구니", href: "/cart" },
 	{ name: "소개", href: "/about" },
 	{ name: "문의", href: "/contact" },
 	{ name: "로그인", href: "/login" },
