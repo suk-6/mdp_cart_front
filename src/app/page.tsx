@@ -1,7 +1,5 @@
 import Link from "next/link";
 import data from "@/data.json";
-import formatter from "@/utils/formatter";
-import Image from "next/image";
 import { HomeCard } from "@/components/home/homeCard";
 
 export default function Home() {
