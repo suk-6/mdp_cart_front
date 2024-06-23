@@ -7,7 +7,7 @@ import {
 	decreaseQuantity,
 	removeItem,
 } from "@/lib/features/cart/cartSlice";
-import { CartCard } from "@/components/cart/cartCard";
+import { CartCard } from "@/components/cart/cartCard1";
 
 export default function CartPage() {
 	const cartItems = useAppSelector(getCartItems);
