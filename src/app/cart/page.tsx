@@ -1,13 +1,30 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { getCartItems, removeItem } from "@/lib/features/cart/cartSlice";
+import {
+	getCartItems,
+	increaseQuantity,
+	decreaseQuantity,
+	removeItem,
+} from "@/lib/features/cart/cartSlice";
 import { CartCard } from "@/components/cart/CartCard";
 
 export default function CartPage() {
 	const cartItems = useAppSelector(getCartItems);
 
 	const dispatch = useAppDispatch();
+	const handleIncreaseQuantity = (itemId: number) => {
+		dispatch(increaseQuantity(itemId));
+	};
+	const handleDecreaseQuantity = (itemId: number) => {
+		if (
+			cartItems.find((cartItem) => cartItem.id === itemId)?.quantity === 1
+		) {
+			dispatch(removeItem(itemId));
+			return;
+		}
+		dispatch(decreaseQuantity(itemId));
+	};
 	const handleRemoveToCart = (itemId: number) => {
 		dispatch(removeItem(itemId));
 	};
@@ -23,6 +40,8 @@ export default function CartPage() {
 						<CartCard
 							key={product.id}
 							product={product}
+							onincreaseQuantity={handleIncreaseQuantity}
+							ondecreaseQuantity={handleDecreaseQuantity}
 							onRemoveToCart={handleRemoveToCart}
 						/>
 					))
