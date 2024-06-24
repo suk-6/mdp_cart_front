@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@/lib/store";
 import { Product, ProductInCart } from "@/models/product";
-import { Slide, toast } from "react-toastify";
+import { infoToast } from "@/utils/alert";
 
 export interface CartState {
 	items: ProductInCart[];
@@ -27,14 +27,7 @@ export const cartSlice = createSlice({
 				);
 			} else state.items.push({ ...action.payload, quantity: 1 });
 
-			toast.info("장바구니에 추가되었습니다.", {
-				position: "bottom-right",
-				autoClose: 3000,
-				hideProgressBar: true,
-				progress: 0,
-				theme: "light",
-				transition: Slide,
-			});
+			infoToast("장바구니에 추가되었습니다.");
 		},
 		removeItem: (state, action: PayloadAction<number>) => {
 			state.items = state.items.filter(

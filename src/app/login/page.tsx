@@ -1,8 +1,8 @@
 "use client";
 
+import { infoToast, warnToast } from "@/utils/alert";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Slide, toast } from "react-toastify";
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -24,23 +24,9 @@ export default function LoginPage() {
 		}).then((res) => {
 			if (res?.ok) {
 				router.push("/");
-				toast.info("로그인에 성공했습니다.", {
-					position: "bottom-right",
-					autoClose: 3000,
-					hideProgressBar: true,
-					progress: 0,
-					theme: "light",
-					transition: Slide,
-				});
+				infoToast("로그인에 성공했습니다.");
 			} else {
-				toast.warn("로그인에 실패했습니다.", {
-					position: "bottom-right",
-					autoClose: 3000,
-					hideProgressBar: true,
-					progress: 0,
-					theme: "light",
-					transition: Slide,
-				});
+				warnToast("로그인에 실패했습니다.");
 			}
 		});
 	};

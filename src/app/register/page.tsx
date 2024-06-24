@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Slide, toast } from "react-toastify";
+import { infoToast, warnToast } from "@/utils/alert";
 
 export default function RegisterPage() {
 	const router = useRouter();
@@ -37,35 +37,14 @@ export default function RegisterPage() {
 		})
 			.then((res) => {
 				if (res.ok) {
-					toast.info("회원가입에 성공했습니다.", {
-						position: "bottom-right",
-						autoClose: 3000,
-						hideProgressBar: true,
-						progress: 0,
-						theme: "light",
-						transition: Slide,
-					});
+					infoToast("회원가입에 성공했습니다.");
 					router.push("/login");
 				} else {
-					toast.warn("회원가입에 실패했습니다.", {
-						position: "bottom-right",
-						autoClose: 3000,
-						hideProgressBar: true,
-						progress: 0,
-						theme: "light",
-						transition: Slide,
-					});
+					warnToast("회원가입에 실패했습니다.");
 				}
 			})
 			.catch(() => {
-				toast.warn("회원가입에 실패했습니다.", {
-					position: "bottom-right",
-					autoClose: 3000,
-					hideProgressBar: true,
-					progress: 0,
-					theme: "light",
-					transition: Slide,
-				});
+				warnToast("회원가입에 실패했습니다.");
 			});
 	};
 
