@@ -12,7 +12,7 @@ export const HomeCard = ({ product }: { product: Product }) => {
 	return (
 		<div
 			key={product.id}
-			className=" w-72 h-fit flex flex-col items-center p-8 gap-4 shadow-xl"
+			className=" w-72 h-fit flex flex-col items-center p-8 gap-4 shadow-xl cursor-pointer"
 			onClick={() => handleAddToCart(product)}
 		>
 			<Image
