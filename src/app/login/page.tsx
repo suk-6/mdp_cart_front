@@ -1,8 +1,11 @@
 "use client";
 
-import loginHandler from "@/auth/login";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Slide, toast } from "react-toastify";
 
 export default function LoginPage() {
+	const router = useRouter();
 	const login = () => {
 		const id = document.getElementById("id") as HTMLInputElement;
 		const password = document.getElementById(
@@ -14,7 +17,24 @@ export default function LoginPage() {
 			return;
 		}
 
-		loginHandler(id.value, password.value);
+		return signIn("credentials", {
+			id: id.value,
+			password: password.value,
+			redirect: false,
+		}).then((res) => {
+			if (res?.ok) {
+				router.push("/");
+			} else {
+				toast.warn("로그인에 실패했습니다.", {
+					position: "bottom-right",
+					autoClose: 3000,
+					hideProgressBar: true,
+					progress: 0,
+					theme: "light",
+					transition: Slide,
+				});
+			}
+		});
 	};
 
 	return (
