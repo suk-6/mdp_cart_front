@@ -13,7 +13,7 @@ export default function Home() {
 					<div className=" text-lg">통통카트에서 쇼핑하세요</div>
 				</div>
 				<Link
-					href="/products"
+					href="/product"
 					className="py-2 px-8 bg-[#ff6b6b] hover:bg-[#ff4b4b] text-white rounded-lg"
 				>
 					지금 쇼핑하기
