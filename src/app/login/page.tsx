@@ -24,6 +24,14 @@ export default function LoginPage() {
 		}).then((res) => {
 			if (res?.ok) {
 				router.push("/");
+				toast.info("로그인에 성공했습니다.", {
+					position: "bottom-right",
+					autoClose: 3000,
+					hideProgressBar: true,
+					progress: 0,
+					theme: "light",
+					transition: Slide,
+				});
 			} else {
 				toast.warn("로그인에 실패했습니다.", {
 					position: "bottom-right",
