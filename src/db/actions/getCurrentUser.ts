@@ -1,7 +1,7 @@
 "use server";
 import { getServerSession } from "next-auth";
 import prisma from "@/db/prisma";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 export const getCurrentUser = async () => {
 	try {
@@ -20,7 +20,7 @@ export const getCurrentUser = async () => {
 			return null;
 		}
 
-		return await {
+		return {
 			id: currentUser.id,
 			email: currentUser.email,
 			name: currentUser.name,
