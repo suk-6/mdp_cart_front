@@ -13,11 +13,7 @@ export default function MypagePage() {
 	const [user, setUser] = useState<DBUserModel | null>(null);
 	const [isGenerated, setIsGenerated] = useState(false);
 	const [apiKey, setApiKey] = useState("");
-	const {
-		data: session,
-		status,
-		update,
-	} = useSession({
+	const { data: session, status } = useSession({
 		required: true,
 		onUnauthenticated: () => {
 			router.push("/login");
