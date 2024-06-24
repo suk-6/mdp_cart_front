@@ -1,9 +1,10 @@
-import bcrypt from "bcrypt";
 import prisma from "@/db/prisma";
+import crypto from "crypto";
 import { getCurrentUser } from "@/db/actions/getCurrentUser";
 
 export const GET = async () => {
-	const key = await bcrypt.hash(Date.now().toString(), 16);
+	const randomBytes = crypto.randomBytes(16);
+	const key = randomBytes.toString("hex");
 	const user = await getCurrentUser();
 	if (!user) {
 		return new Response(null, {
