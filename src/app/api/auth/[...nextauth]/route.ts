@@ -4,7 +4,7 @@ import prisma from "@/db/prisma";
 import bcrypt from "bcrypt";
 import { UserModel } from "@/models/user";
 
-const handler = NextAuth({
+export const authOptions = {
 	pages: {
 		signIn: "login",
 	},
@@ -42,6 +42,8 @@ const handler = NextAuth({
 			},
 		}),
 	],
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
