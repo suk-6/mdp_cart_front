@@ -21,6 +21,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ApiKey    ApiKey[]
+  Cart      Cart[]
 }
 
 model ApiKey {
@@ -28,6 +29,15 @@ model ApiKey {
   key       String   @unique
   userId    String
   user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Cart {
+  id        String   @id @unique @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  items     String // JSON
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
