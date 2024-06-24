@@ -1,6 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { Slide, toast } from "react-toastify";
+
 export default function RegisterPage() {
+	const router = useRouter();
 	const register = () => {
 		const id = document.getElementById("id") as HTMLInputElement;
 		const password = document.getElementById(
@@ -19,7 +23,50 @@ export default function RegisterPage() {
 			return;
 		}
 
-		alert("회원가입 성공");
+		fetch("/api/auth/register", {
+			method: "POST",
+			body: JSON.stringify({
+				id: id.value,
+				password: password.value,
+				email: email.value,
+				name: name.value,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => {
+				if (res.ok) {
+					toast.info("회원가입에 성공했습니다.", {
+						position: "bottom-right",
+						autoClose: 3000,
+						hideProgressBar: true,
+						progress: 0,
+						theme: "light",
+						transition: Slide,
+					});
+					router.push("/login");
+				} else {
+					toast.warn("회원가입에 실패했습니다.", {
+						position: "bottom-right",
+						autoClose: 3000,
+						hideProgressBar: true,
+						progress: 0,
+						theme: "light",
+						transition: Slide,
+					});
+				}
+			})
+			.catch(() => {
+				toast.warn("회원가입에 실패했습니다.", {
+					position: "bottom-right",
+					autoClose: 3000,
+					hideProgressBar: true,
+					progress: 0,
+					theme: "light",
+					transition: Slide,
+				});
+			});
 	};
 
 	return (
