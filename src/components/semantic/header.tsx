@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const pages = [
@@ -16,13 +16,13 @@ const unauthenticatedPages = [
 ];
 
 const authenticatedPages = [
-	{ name: "로그아웃", href: "/logout" },
 	{ name: "마이페이지", href: "/mypage" },
+	{ name: "로그아웃", func: signOut },
 ];
 
 export const Header = () => {
 	const session = useSession();
-	const isAuthenticated = session.data;
+	const isAuthenticated = session.status === "authenticated";
 
 	return (
 		<header className="w-full h-16 bg-[#333] text-white flex items-center justify-between p-6 px-20 text-nowrap">
@@ -30,23 +30,35 @@ export const Header = () => {
 				<h1 className="text-3xl font-bold">🛒통통카트</h1>
 			</Link>
 			<nav className=" flex flex-row gap-6">
-				{pages.map((page) => (
-					<Link key={page.href} href={page.href}>
+				{pages.map((page, i) => (
+					<Link key={i} href={page.href}>
 						<div>{page.name}</div>
 					</Link>
 				))}
-				{isAuthenticated &&
-					authenticatedPages.map((page) => (
-						<Link key={page.href} href={page.href}>
-							<div>{page.name}</div>
-						</Link>
-					))}
 				{!isAuthenticated &&
-					unauthenticatedPages.map((page) => (
-						<Link key={page.href} href={page.href}>
+					unauthenticatedPages.map((page, i) => (
+						<Link key={i} href={page.href}>
 							<div>{page.name}</div>
 						</Link>
 					))}
+				{isAuthenticated &&
+					authenticatedPages.map((page, i) =>
+						page.href ? (
+							<Link key={i} href={page.href}>
+								<div>{page.name}</div>
+							</Link>
+						) : (
+							page.func && (
+								<div
+									key={i}
+									onClick={() => page.func()}
+									className=" cursor-pointer"
+								>
+									{page.name}
+								</div>
+							)
+						)
+					)}
 			</nav>
 		</header>
 	);
