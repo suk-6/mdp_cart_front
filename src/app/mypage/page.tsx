@@ -6,10 +6,13 @@ import { getCurrentUser } from "@/db/actions/getCurrentUser";
 import { useEffect, useState } from "react";
 import { DBUserModel } from "@/models/user";
 import dateFormatter from "@/utils/dateFormatter";
+import { infoToast } from "@/utils/alert";
 
 export default function MypagePage() {
 	const router = useRouter();
 	const [user, setUser] = useState<DBUserModel | null>(null);
+	const [isGenerated, setIsGenerated] = useState(false);
+	const [apiKey, setApiKey] = useState("");
 	const {
 		data: session,
 		status,
@@ -29,6 +32,16 @@ export default function MypagePage() {
 			setUser(user);
 		});
 	}, [router, session]);
+
+	const generateApiKey = async () => {
+		setIsGenerated(true);
+		fetch("/api/auth/key/revoke").then(async () => {
+			infoToast("기존 API Key가 삭제되었습니다.");
+			const res = await fetch("/api/auth/key/generate");
+			const data = await res.json();
+			setApiKey(data.key);
+		});
+	};
 
 	if (status === "loading") return <div>로딩중...</div>;
 
@@ -59,6 +72,28 @@ export default function MypagePage() {
 							</p>
 						</div>
 					</div>
+					{!isGenerated && (
+						<div
+							className="w-full bg-gray-200 mt-4 p-3 flex justify-center items-center rounded-lg shadow-md cursor-pointer"
+							onClick={generateApiKey}
+						>
+							<p>Generate API Key</p>
+						</div>
+					)}
+					{isGenerated && (
+						<div className="w-full bg-white border border-green-300 mt-4 p-3 flex justify-between items-center rounded-lg shadow-md cursor-pointer px-6">
+							<p>{apiKey}</p>
+							<button
+								className="bg-green-300 hover:bg-green-400 text-black px-4 py-2 rounded-md"
+								onClick={() => {
+									navigator.clipboard.writeText(apiKey);
+									infoToast("클립보드에 복사되었습니다.");
+								}}
+							>
+								Copy
+							</button>
+						</div>
+					)}
 				</div>
 				<div className="bg-background rounded-lg shadow-md p-6">
 					<h2 className="text-2xl font-bold mb-4">Order History</h2>
